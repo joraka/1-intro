@@ -235,3 +235,98 @@ console.log('pomidoras'.slice(-2));
 console.log('pomidoras'.slice(-4));
 console.log('pomidoras'.slice(0, -4));
 console.log('pomidoras'.slice(1, -1));
+
+
+// mokytojas -> mokytoja
+const text = 'Mokytojas atejo ir tare. Ryte mokytojas vaiksto.';
+const textFemale = text
+    .replaceAll('mokytojas', 'mokytoja')
+    .replaceAll('Mokytojas', 'Mokytoja');
+
+console.log(textFemale);
+
+console.clear();
+
+console.log('pomidoras'.toUpperCase());
+console.log('3 pomidorai ir 4 AGurkai'.toUpperCase());
+
+console.log('POMIDORAS'.toLowerCase());
+console.log('3 POMIDORAI IR 4 AGURKAI'.toLowerCase());
+
+console.log('3 POMIDORAI IR 4 AGURKAI'.toLocaleLowerCase());
+
+console.clear();
+const randomNumber = 562156;
+console.log(randomNumber);
+console.log(randomNumber.toString());
+console.log('' + randomNumber);
+console.log(`${randomNumber}`);
+
+console.log(true);
+console.log(true.toString());
+console.log('' + true);
+console.log(`${true}`);
+
+
+console.clear();
+console.log('<', 'pomidoras               ', '>');
+console.log('pomidoras               ');
+console.log('<', '               pomidoras', '>');
+console.log('               pomidoras');
+console.log('<', '        pomidoras       ', '>');
+console.log('        pomidoras       ');
+
+const formUsername = ' Grietine    ';
+console.log(formUsername.length);
+console.log(formUsername.replaceAll(' ', '').length);
+
+const hi = '    Labas    rytas,          Lietuva!    ';
+console.log(
+    hi
+        .trim()
+        .replaceAll('  ', ' ')
+        .replaceAll('  ', ' ')
+        .replaceAll('  ', ' ')
+        .replaceAll('  ', ' ')
+);
+console.log(hi.includes('  '));
+
+console.clear();
+
+const text123 = 'pirmas antras trecias';
+const dictionary = text123.split(' ');
+const wordsCount = dictionary.length;
+
+console.log(text123);
+console.log(dictionary);
+console.log(wordsCount);
+console.log(text123[0]);
+console.log(text123[1]);
+console.log(text123[2]);
+console.log(dictionary[0]);
+console.log(dictionary[1]);
+console.log(dictionary[2]);
+
+const js = `Array objects cannot use arbitrary strings as element indexes (as in an associative array) but must use nonnegative integers (or their respective string form). Setting or accessing via non-integers will not set or retrieve an element from the array list itself, but will set or access a variable associated with that array's object property collection. The array's object properties and list of array elements are separate, and the array's traversal and mutation operations cannot be applied to these named properties.`;
+
+const sentence = js.split('.');
+console.log(sentence);
+console.log(sentence.length);
+
+
+console.clear();
+
+console.log('duona'.split('o'));
+console.log('duona'.split('u'));
+console.log('duona'.split('g'));
+console.log('duona'.split('d'));
+console.log('duona'.split('a'));
+console.log('duona'.split('uo'));
+console.log('duona'.split('uon'));
+console.log('duona'.split('du'));
+
+console.log('vasara'.split('s'));
+console.log('vasara'.split('a'));
+
+console.log('vasara'.split(''));
+console.log('vasara'.length);

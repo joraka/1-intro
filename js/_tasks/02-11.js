@@ -223,6 +223,7 @@ console.log(`'JavaScript' - ${countVowels("JavaScript")} vowels`);
 console.log(`'Coding Challenge' - ${countVowels("Coding Challenge")} vowels`);
 
 //------------------------------------------------------------------
+console.log('arr');
 
 /**
  * Returns a new array with duplicates removed.
@@ -245,6 +246,7 @@ console.log(
 );
 
 //----
+console.log('set');
 
 function removeDuplicates2(arr) {
   return Array.from(new Set(arr));
@@ -255,4 +257,40 @@ console.log(
 );
 console.log(
   `${[1, 1, 2, 1, 1, 2, 3, 4, 1, 1]} -> ${removeDuplicates2([1, 1, 2, 1, 1, 2, 3, 4, 1, 1])}`
+);
+
+//----
+console.log('obj');
+
+function removeDuplicates3(arr) {
+  const obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (!obj.hasOwnProperty(arr[i])) obj[arr[i]] = true;
+  }
+  return Object.keys(obj);
+}
+
+console.log(
+  `${[1, 1, 2, 1, 1, 1, 1, 1, 1, 1]} -> ${removeDuplicates3([1, 1, 2, 1, 1, 1, 1, 1, 1, 1])}`
+);
+console.log(
+  `${[1, 1, 2, 1, 1, 2, 3, 4, 1, 1]} -> ${removeDuplicates3([1, 1, 2, 1, 1, 2, 3, 4, 1, 1])}`
+);
+
+//----
+console.log('map');
+
+function removeDuplicates4(arr) {
+  const obj = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    if (!obj.has(arr[i])) obj.set(arr[i], true);
+  }
+  return Object.keys(obj);
+}
+
+console.log(
+  `${[1, 1, 2, 1, 1, 1, 1, 1, 1, 1]} -> ${removeDuplicates3([1, 1, 2, 1, 1, 1, 1, 1, 1, 1])}`
+);
+console.log(
+  `${[1, 1, 2, 1, 1, 2, 3, 4, 1, 1]} -> ${removeDuplicates3([1, 1, 2, 1, 1, 2, 3, 4, 1, 1])}`
 );
