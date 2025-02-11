@@ -35,8 +35,8 @@ const daysLeft = 5;
 console.log(`Likusios dienos: ${daysLeft}`);
 
 // 15. Tekste "mokytojas" pakeiskite pabaigą į "ėja", kad gautumėte "mokytoja".
-const str5 = "mokytojas";
-console.log(`${str5} -> ${str5.slice(0, -1)}`);
+const str5 = "mokytojas dainuoja. Mokytojas šoka";
+console.log(`${str5} -> ${str5.replaceAll('mokytojas','mokytoja').replaceAll('Mokytojas', 'Mokytoja')}`);
 
 //-----------------
 
