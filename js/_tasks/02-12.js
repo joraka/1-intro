@@ -205,8 +205,13 @@ function beTarpu2(tekstas) {
   return naujasTekstas;
 }
 
+function beTarpu3(tekstas) {
+  return tekstas.replaceAll(" ", "");
+}
+
 console.log(`beTarpu: 'Labas pasauli' -> ${beTarpu("Labas pasauli")}`);
 console.log(`beTarpu2: 'Labas pasauli' -> ${beTarpu2("Labas pasauli")}`);
+console.log(`beTarpu3: 'Labas pasauli' -> ${beTarpu3("Labas pasauli")}`);
 
 // 15. Parašykite funkciją, kuri patikrina, ar string'e yra daugiau nei 10 simbolių.
 // (Pvz., arIlgas("JavaScript") → true <-(???daugiau arba lygu???), arIlgas("Labas") → false.)
@@ -220,19 +225,17 @@ console.log(`arIlgasTekstas: 'superkebabas', 10 -> ${arIlgasTekstas("kebabas", 1
 console.log(`arIlgasTekstas: 'grybas', 5 -> ${arIlgasTekstas("grybas", 5)}`);
 
 // 16. Sukurkite for ciklą, kuris išveda daugybos lentelę 5(nuo 1 iki 10).
-
-function daugybosLentele(iki) {
+function daugybosLentele(sk) {
   let lentele = "";
-  for (let i = 1; i <= iki; i++) {
-    for (let j = 2; j < 10; j++) {
-      lentele += `${i}*${j}=${i * j} `;
-    }
-    if (i < iki) lentele += "\n";
+  for (let i = 1; i <= 10; i++) {
+    lentele += `${sk} * ${i} = ${sk * i}`;
+    if (i < 10) lentele += " | ";
   }
   return lentele;
 }
 
-console.log(`daugybosLentele(5) \n${daugybosLentele(5)}`);
+console.log(`daugybosLentele(5) -> ${daugybosLentele(5)}`);
+console.log(`daugybosLentele(7) -> ${daugybosLentele(7)}`);
 
 // 17. Parašykite funkciją, kuri priima stringą ir pakeičia visas "a" raides į "@".
 // (Pvz., keistiRaide("banana") → "b@n@n@".)
