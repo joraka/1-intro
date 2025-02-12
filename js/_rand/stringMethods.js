@@ -9,6 +9,7 @@ function charAt(string, index) {
   return "";
 }
 
+
 console.log([
   charAt(text, 200),
   charAt(text, 0),
@@ -16,13 +17,12 @@ console.log([
   charAt(text, 2),
   charAt(text, -2),
   charAt(text, -5),
+  charAt(text, -500),
 ]);
-console.log([
-  charAt(text2, 99),
-  charAt(text2, -99),
-  charAt(text2, 0),
-  charAt(text2, 1),
-  charAt(text2, -1),
-  charAt(text2, -2),
-  charAt(text2, 8),
-]);
+
+// time = Date.now();
+// const cycleCount = 200000000
+// for (let i = 0; i < cycleCount; i++) {
+
+// }
+// console.log(Date.now() - time);
