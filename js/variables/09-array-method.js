@@ -128,3 +128,108 @@ if (studentCount === 0) {
 } else {
     console.log(`Sarase yra "${seachStudent}": ${studentCount}`);
 }
+
+console.clear();
+
+const medziai = [];
+console.log(medziai);
+
+medziai.push('ąžuolas');
+console.log(medziai);
+
+medziai.push('eglė');
+console.log(medziai);
+
+medziai.push('beržas');
+console.log(medziai);
+
+medziai.pop();
+console.log(medziai);
+
+medziai.unshift('pušis');
+console.log(medziai);
+
+medziai.unshift('kedras');
+console.log(medziai);
+
+medziai.shift();
+console.log(medziai);
+
+console.log([1, 2, 3].concat([4, 5]));
+
+console.log([9, 99, 999, 9999].slice(1, -1));
+
+const sp1 = [1, 2, 3, 4, 5, 6, 7];
+console.log(sp1);
+
+const sp2 = sp1.splice(2, 3);
+console.log(sp2);
+
+console.log(sp1);
+
+console.clear();
+
+const text = 'Labas rytas Lietuva';
+const words = text.split(' ');
+console.log(words);
+
+const textWithDashes = words.join();
+console.log(textWithDashes);
+
+const textToStr = '' + words;
+console.log(textToStr);
+
+const textJoin1 = words.join(' ');
+console.log(textJoin1);
+
+const textJoin2 = words.join('-');
+console.log(textJoin2);
+
+const textJoin3 = words.join('_-=-_');
+console.log(textJoin3);
+
+const textJoin4 = words.join('(o.o)');
+console.log(textJoin4);
+
+const textJoin5 = words.join('( ͡° ͜ʖ ͡°)');
+console.log(textJoin5);
+
+console.log(' ͡° ͜ʖ ͡°'.length);
+console.log(' ͡° ͜ʖ ͡°'.charCodeAt(0));
+console.log(' ͡° ͜ʖ ͡°'.charCodeAt(1));
+console.log(' ͡° ͜ʖ ͡°'.charCodeAt(2));
+console.log(' ͡° ͜ʖ ͡°'.charCodeAt(3));
+console.log(' ͡° ͜ʖ ͡°'.charCodeAt(4));
+console.log(' ͡° ͜ʖ ͡°'.charCodeAt(5));
+console.log(' ͡° ͜ʖ ͡°'.charCodeAt(6));
+console.log(' ͡° ͜ʖ ͡°'.charCodeAt(7));
+console.log(' ͡° ͜ʖ ͡°'.charCodeAt(8));
+
+console.clear();
+
+const rev = [1, 2, 3];
+console.log(rev);
+
+rev.reverse();
+console.log(rev);
+
+rev.reverse();
+console.log(rev);
+
+// Labas rytas Lietuva -> Lietuva rytas Labas
+
+const lrl = 'Labas rytas Lietuva'
+    .split(' ')
+    .reverse()
+    .join(' ');
+
+console.log(lrl);
+
+// alus -> sula
+
+const alus = 'alus'
+    .split('')
+    .reverse()
+    .join('');
+
+console.log(alus);

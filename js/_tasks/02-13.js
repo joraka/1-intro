@@ -142,25 +142,29 @@ const array9 = [1, 3, 5, 7, 9];
 // Sprendimas su for ciklu:
 let arDidejimoTvarka = false;
 for (let i = 1; i < array9.length; i++) {
-  if (array9[i] > array9[i - 1]) {
+  if (array9[i] >= array9[i - 1]) {
     arDidejimoTvarka = true;
   } else {
     arDidejimoTvarka = false;
     break;
   }
 }
-console.log("arDidejimoTvarka for", arDidejimoTvarka);
+console.log("uzt9 arDidejimoTvarka for", arDidejimoTvarka);
 
 // Sprendimas su every metodu:
-// ?????????????????????????????????
-let paskutinisSkaicius = Number.MIN_VALUE;
+// let paskutinisSkaicius = Number.MIN_VALUE;
+// console.log(
+//   "arDidejimoTvarka every()",
+//   array9.every((sk, i) => {
+//     const arPadidejo = sk > paskutinisSkaicius;
+//     paskutinisSkaicius = sk;
+//     return arPadidejo;
+//   })
+// );
+
 console.log(
-  "arDidejimoTvarka every()",
-  array9.every((sk, i) => {
-    const arPadidejo = sk > paskutinisSkaicius;
-    paskutinisSkaicius = sk;
-    return arPadidejo;
-  })
+  "uzt9 arDidejimoTvarka every()",
+  array9.every((sk, i) => i === 0 || sk >= array9[i - 1])
 );
 
 // =============================================
