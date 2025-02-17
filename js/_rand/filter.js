@@ -22,6 +22,14 @@ const colorRepeat2 = colors.filter((color, index, list) => list.indexOf(color, i
 console.log("----");
 console.log("colorRepeat2", colorRepeat2);
 
+const colorRepeat2x = colors.filter((color, index, list) => list.indexOf(color) !== list.lastIndexOf(color));
+console.log("----");
+console.log("colorRepeat2x", colorRepeat2x);
+
+const colorRepeat3x = colors.filter((color, index, list) => list.indexOf(color, index + 1) !== -1);
+console.log("----");
+console.log("colorRepeat3x", colorRepeat3x);
+
 ///-----------
 
 const colorRepeatFilter = colors.filter(
