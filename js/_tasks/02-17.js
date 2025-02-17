@@ -179,9 +179,10 @@ console.log('arAnagrama2("hello", "world")', arAnagrama2("hello", "world"));
 
 /**
  * Raskite klaidą ir ištaisykite funkciją, kad ji pakeistų tiek didžiąsias, tiek mažąsias "a" į "@".
- */
+ * Funkcija: const keistiRaide = (string) => string.replaceAll('a' || 'A', '@');
+*/
 
-const keistiRaide = (zodis) => zodis.replaceAll(/[a]/gi, "@");
+const keistiRaide = (zodis) => zodis.replace(/[a]/gi, "@");
 
 console.log('keistiRaide("Banana")', keistiRaide("Banana"));
 console.log('keistiRaide("Ananasas")', keistiRaide("Ananasas"));
