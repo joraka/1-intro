@@ -22,15 +22,19 @@ const maryte = {
   ],
 };
 
-const masyvoVidurkis = (masyvas) =>
-  apalinimas(masyvas.reduce((aku, sk) => aku + sk, 0) / masyvas.length, 2);
-const apalinimas = (skaicius, kiekis) => Number(Number(skaicius).toFixed(kiekis));
+const masyvoVidurkis = (masyvas) => {
+  let suma = 0;
+  for (let i = 0; i < masyvas.length; i++) {
+    suma += masyvas[i];
+  }
+  return suma / masyvas.length;
+};
 
-let visiPazymiuMasyvas = [];
+const visuPazymiuMasyvas = [];
 
 const spausdintiObjektoVidurki = (objektas) => {
   const vidurkis = masyvoVidurkis(objektas.marks);
-  visiPazymiuMasyvas.push(...objektas.marks);
+  visuPazymiuMasyvas.push(vidurkis);
   console.log(`${objektas.name} -> vidurkis: ${vidurkis}`);
 };
 
@@ -38,4 +42,4 @@ spausdintiObjektoVidurki(maryte);
 spausdintiObjektoVidurki(maryte.parents[0]);
 spausdintiObjektoVidurki(maryte.parents[1]);
 
-console.log("Visu pažymių vidurkis: " + masyvoVidurkis(visiPazymiuMasyvas));
+console.log("Visu pažymių vidurkis: " + masyvoVidurkis(visuPazymiuMasyvas));
