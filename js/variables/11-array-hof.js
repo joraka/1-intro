@@ -141,22 +141,29 @@ console.log(doubleWords2);
 console.clear();
 
 const colors = ['red', 'green', 'blue', 'yellow', 'red', 'orange'];
-console.log(colors);
+const colors2 = ['green', 'red', 'red'];
+const colors3 = ['red', 'red', 'orange', 'red'];
+const colors4 = ['red', 'green', 'blue', 'yellow'];
 
-const colors2 = colors.map((item, index, list) => item);
-console.log(colors2);
+const colorsCopy2 = colors.map((item, index, list) => item);
+console.log(colorsCopy2);
 
-const colors3 = colors.map((item, index, list) => list[index]);
-console.log(colors3);
+const colorsCopy3 = colors.map((item, index, list) => list[index]);
+console.log(colorsCopy3);
 
 // rasti, visas spalvas, kurios kartojasi
-// rasti, visas spalvas, kurios yra unikalios
+// ['red', 'red', 'orange', 'red']
+// 0: list.indexOf(red) !== list.lastIndexOf(red): 0 !== 3 -> true
+// 1: list.indexOf(red) !== list.lastIndexOf(red): 0 !== 3 -> true
+// 2: list.indexOf(orange) !== list.lastIndexOf(orange): 2 !== 2 -> false
+// 3: list.indexOf(red) !== list.lastIndexOf(red): 0 !== 3 -> true
+// ISVADA: sprendimas logiskai neteisingas,
+// taciau gaunamas rezultatas yra teisingas 👀👀👀
+function repeatingValues(color, index, list) {
+    return list.indexOf(color) !== list.lastIndexOf(color);
+}
 
-// ['red', 'green', 'blue', 'yellow', 'red', 'orange'];
-const colorRepeat = colors.filter(
-    (color, index, list) =>
-        // list.indexOf(color) !== list.lastIndexOf(color)
-        list.indexOf(color) < 1
-);
-console.log('----');
-console.log(colorRepeat);
+console.log(colors.filter(repeatingValues));
+console.log(colors2.filter(repeatingValues));
+console.log(colors3.filter(repeatingValues));
+console.log(colors4.filter(repeatingValues));
