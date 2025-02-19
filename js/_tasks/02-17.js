@@ -108,9 +108,23 @@ const beSkaiciu3 = (tekstas) => {
   return naujasTekstas;
 };
 
+const beSkaiciu4 = (tekstas) => {
+  let naujasTekstas = [];
+  for (let i = 0; i < tekstas.length; i++) {
+    if (tekstas[i] >= "0" && tekstas[i] <= "9") {
+      if (naujasTekstas.at(-1) === " ") naujasTekstas.pop();
+    } else {
+      naujasTekstas.push(tekstas[i]);
+    }
+  }
+  return naujasTekstas.join("");
+};
+
 console.log("beSkaiciu", beSkaiciu("Labas rytas, Lietuva 2025!"));
 console.log("beSkaiciu2", beSkaiciu2("Labas rytas, Lietuva 2025!"));
 console.log("beSkaiciu3", beSkaiciu3("Labas rytas, Lietuva 2025!"));
+console.log("beSkaiciu4", beSkaiciu3("Labas rytas, Lietuva 2025!"));
+console.log("beSkaiciu4", beSkaiciu4("Labas rytas, Lietuva 2025 2025!"));
 
 /**
  * Sukurkite funkciją, kuri priima skaičių masyvą ir grąžina visus unikalius skaičius (pašalina pasikartojančius).
