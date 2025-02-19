@@ -96,8 +96,21 @@ const beSkaiciu2 = (tekstas) =>
     }
   }, "");
 
+const beSkaiciu3 = (tekstas) => {
+  let naujasTekstas = "";
+  for (let i = 0; i < tekstas.length; i++) {
+    if ("1234567890".includes(tekstas[i])) {
+      if (i > 0 && tekstas[i - 1] === " ") naujasTekstas = naujasTekstas.slice(0, -1);
+    } else {
+      naujasTekstas += tekstas[i];
+    }
+  }
+  return naujasTekstas;
+};
+
 console.log("beSkaiciu", beSkaiciu("Labas rytas, Lietuva 2025!"));
 console.log("beSkaiciu2", beSkaiciu2("Labas rytas, Lietuva 2025!"));
+console.log("beSkaiciu3", beSkaiciu3("Labas rytas, Lietuva 2025!"));
 
 /**
  * Sukurkite funkciją, kuri priima skaičių masyvą ir grąžina visus unikalius skaičius (pašalina pasikartojančius).
@@ -180,7 +193,7 @@ console.log('arAnagrama2("hello", "world")', arAnagrama2("hello", "world"));
 /**
  * Raskite klaidą ir ištaisykite funkciją, kad ji pakeistų tiek didžiąsias, tiek mažąsias "a" į "@".
  * Funkcija: const keistiRaide = (string) => string.replaceAll('a' || 'A', '@');
-*/
+ */
 
 const keistiRaide = (zodis) => zodis.replace(/[a]/gi, "@");
 
