@@ -123,7 +123,7 @@ const beSkaiciu4 = (tekstas) => {
 console.log("beSkaiciu", beSkaiciu("Labas rytas, Lietuva 2025!"));
 console.log("beSkaiciu2", beSkaiciu2("Labas rytas, Lietuva 2025!"));
 console.log("beSkaiciu3", beSkaiciu3("Labas rytas, Lietuva 2025!"));
-console.log("beSkaiciu4", beSkaiciu3("Labas rytas, Lietuva 2025!"));
+console.log("beSkaiciu3", beSkaiciu3("Labas rytas, Lietuva 2025!"));
 console.log("beSkaiciu4", beSkaiciu4("Labas rytas, Lietuva 2025 2025!"));
 
 /**

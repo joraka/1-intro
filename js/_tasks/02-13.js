@@ -70,15 +70,17 @@ console.log("uzt4 filer", numbers4.filter((sk) => sk === target).length);
 const numbers5 = [-3, 0, 5, -1, 8, -2];
 
 // Sprendimas su for ciklu:
-const naujasMasyvas = [];
+const teigiamiSkaiciai = [];
 for (let i = 0; i < numbers5.length; i++) {
-  if (numbers5[i] >= 0) naujasMasyvas.push(numbers5[i]);
+  if (numbers5[i] > 0) teigiamiSkaiciai.push(numbers5[i]);
 }
-console.log("uzt5 for", naujasMasyvas);
+console.log("uzt5 for", teigiamiSkaiciai);
 
 // Sprendimas su filter metodu:
-const naujasMasyvas2 = numbers5.filter((sk) => sk >= 0);
-console.log("uzt5 filter", naujasMasyvas2);
+console.log(
+  "uzt5 filter",
+  numbers5.filter((sk) => sk > 0)
+);
 
 // =============================================
 // Užduotis 6: Rasti visų masyvo elementų sandaugą
@@ -86,9 +88,8 @@ console.log("uzt5 filter", naujasMasyvas2);
 const numbers6 = [1, 2, 3, 4];
 
 // Sprendimas su for ciklu:
-let suma2 = numbers6[0];
-for (let i = 1; i < numbers6.length; i++) {
-  if (suma2 === 0) suma2 = 1;
+let suma2 = 1;
+for (let i = 0; i < numbers6.length; i++) {
   suma2 *= numbers6[i];
 }
 console.log("uzt6 for", suma2);
@@ -96,9 +97,7 @@ console.log("uzt6 for", suma2);
 // Sprendimas su reduce metodu:
 console.log(
   "uzt6 reduce",
-  numbers6.reduce((acc, sk) => {
-    return acc * sk;
-  }, 1)
+  numbers6.reduce((acc, sk) => acc * sk, 1)
 );
 
 // =============================================
@@ -114,7 +113,7 @@ for (let i = 0; i < array7.length; i++) {
 console.log("uzt7 for", naujasMasyvas3);
 
 // Sprendimas su built-in reverse metodu (kopijuojame, kad nepakeistume originalo):
-console.log("uzt7 reverse()", array7.reverse());
+console.log("uzt7 reverse()", array7.slice().reverse());
 
 // =============================================
 // Užduotis 8: Rasti pirmą indeksą, kuriame pasitaiko nurodytas elementas. Jei neranda, grąžinti -1
@@ -123,10 +122,11 @@ const array8 = ["a", "b", "c", "d"];
 const searchElement = "c";
 
 // Sprendimas su for ciklu:
-let lastIndex = 0;
+let lastIndex = -1;
 for (let i = 0; i < array8.length; i++) {
   if (array8[i] === searchElement) {
     lastIndex = i;
+    break;
   }
 }
 console.log("uzt8 for", lastIndex);
@@ -140,27 +140,16 @@ console.log("uzt8 indexOf", array8.indexOf(searchElement));
 const array9 = [1, 3, 5, 7, 9];
 
 // Sprendimas su for ciklu:
-let arDidejimoTvarka = false;
+let arDidejimoTvarka = true;
 for (let i = 1; i < array9.length; i++) {
-  if (array9[i] >= array9[i - 1]) {
-    arDidejimoTvarka = true;
-  } else {
+  if (array9[i] < array9[i - 1]) {
     arDidejimoTvarka = false;
     break;
   }
 }
 console.log("uzt9 arDidejimoTvarka for", arDidejimoTvarka);
 
-// Sprendimas su every metodu:
-// let paskutinisSkaicius = Number.MIN_VALUE;
-// console.log(
-//   "arDidejimoTvarka every()",
-//   array9.every((sk, i) => {
-//     const arPadidejo = sk > paskutinisSkaicius;
-//     paskutinisSkaicius = sk;
-//     return arPadidejo;
-//   })
-// );
+//every
 
 console.log(
   "uzt9 arDidejimoTvarka every()",
@@ -182,7 +171,7 @@ console.log("uzt10 for", naujasMasyvas4);
 // Sprendimas su map metodu:
 console.log(
   "uzt10 map",
-  numbers10.map((sk) => sk ** 2)
+  numbers10.map((sk) => sk * sk)
 );
 
 // =============================================
@@ -191,17 +180,16 @@ console.log(
 const numbers11 = [1, 2, 3, 4, 5, 6];
 
 // Sprendimas su for ciklu:
-let nelyginiai = 0;
+let nelyginiuSuma = 0;
 for (let i = 0; i < numbers11.length; i++) {
-  if (numbers11[i] % 2 !== 0) nelyginiai++;
+  if (numbers11[i] % 2 !== 0) nelyginiuSuma += numbers11[i];
 }
-console.log("uzt11 for", nelyginiai);
+console.log("uzt11 for", nelyginiuSuma);
 
 // Sprendimas su filter ir reduce:
-console.log("uzt11 filter", numbers2.filter((sk) => sk % 2 !== 0).length);
 console.log(
-  "uzt11 reduce",
-  numbers2.reduce((acc, sk) => (sk % 2 !== 0 ? acc + 1 : acc), 0)
+  "uzt11 filter + reduce",
+  numbers2.filter((sk) => sk % 2 !== 0).reduce((acc, sk) => acc + sk, 0)
 );
 
 // =============================================
@@ -217,7 +205,7 @@ for (let i = 0; i < numbers12.length; i++) {
 console.log("uzt12 for", suma3 / numbers12.length);
 
 // Sprendimas su reduce:
-console.log("uzt12 reduce", numbers12.reduce((acc, sk) => acc + sk) / numbers12.length);
+console.log("uzt12 reduce", numbers12.reduce((acc, sk) => acc + sk, 0) / numbers12.length);
 
 // =============================================
 // Užduotis 13: Pašalinti pasikartojančius elementus iš masyvo
@@ -263,7 +251,7 @@ for (let i = 0; i < numbers14.length; i++) {
 console.log("uzt14 for", antrasDidziausias);
 
 // Sprendimas su sort metodu (kopijuojame, kad nepakeistume originalo):
-console.log("uzt14 for", numbers14.slice(0).sort((a, b) => b - a)[1]);
+console.log("uzt14 sort", numbers14.slice().sort((a, b) => b - a)[1]);
 
 // =============================================
 // Užduotis 15: Suskaičiuoti, kiek masyvo elementų yra didesni už duotą slenkstį
@@ -274,12 +262,12 @@ const threshold = 20;
 // Sprendimas su for ciklu:
 let rastuElementuKiekis = 0;
 for (let i = 0; i < numbers15.length; i++) {
-  if (numbers15[i] === threshold) rastuElementuKiekis++;
+  if (numbers15[i] > threshold) rastuElementuKiekis++;
 }
 console.log("uzt15 for", rastuElementuKiekis);
 
 // Sprendimas su filter:
-console.log("uzt15 filter", numbers15.filter((sk) => sk === threshold).length);
+console.log("uzt15 filter", numbers15.filter((sk) => sk > threshold).length);
 
 // =============================================
 // Užduotis 16: Sujungti du masyvus į vieną
@@ -320,7 +308,7 @@ for (let i = 0; i < nestedArray.length; i++) {
 console.log("uzt17 for", naujasMasyvas7);
 
 // Sprendimas su flat metodu:
-console.log("uzt17 for", nestedArray.flat());
+console.log("uzt17 flat", nestedArray.flat());
 
 // =============================================
 // Užduotis 18: Rasti bendrus elementus tarp dviejų masyvų
