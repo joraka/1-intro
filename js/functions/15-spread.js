@@ -76,3 +76,20 @@ const objD = {
     ...objD1,
 };
 console.log(objD);
+
+console.clear();
+
+const k = [[4], [5, 55], 7, [6, 66, 666]];
+const l1 = [];
+
+for (let i = 0; i < k.length; i++) {
+    const innerArray = k[i];
+
+    if (Array.isArray(innerArray)) {
+        l1.push(...innerArray);
+    } else {
+        l1.push(innerArray);
+    }
+}
+
+console.log(l1);
