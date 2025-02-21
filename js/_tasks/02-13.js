@@ -228,8 +228,8 @@ console.log("uzt13 Set", Array.from(new Set(numbers13)));
 const numbers14 = [5, 3, 9, 1, 7];
 
 // Sprendimas su for ciklu:
-let pirmasDidziausias = Number.MIN_VALUE;
-let antrasDidziausias = Number.MIN_VALUE;
+let pirmasDidziausias = Number.MIN_SAFE_INTEGER;
+let antrasDidziausias = Number.MIN_SAFE_INTEGER;
 
 // for (let i = 0; i < numbers14.length; i++) {
 //   if (numbers14[i] > pirmasDidziausias) pirmasDidziausias = numbers14[i];
@@ -369,9 +369,8 @@ const numbers20 = [1, 2, 3, 4];
 
 // Sprendimas su for ciklu:
 let sumosArr = [];
-for (let i = 0, _suma = 0; i < numbers20.length; i++) {
-  _suma += numbers20[i];
-  sumosArr.push(_suma);
+for (let i = 0, suma = 0; i < numbers20.length; i++) {
+  sumosArr.push((suma += numbers20[i]));
 }
 console.log("uzt20 for", sumosArr);
 
