@@ -258,21 +258,26 @@ function smaller(nums) {
 
 function smaller9(nums) {
   const arr = [];
-  const max = Math.max(...nums);
-  const countArr = Array(max).fill(0);
+  const countArr = [];
+
   for (let i = nums.length - 1; i >= 0; i--) {
     let sum = 0;
-    for (let j = countArr.length - 1; j >= 0; j--) {
-      if (j === nums[i]) {
-        countArr[j]++;
-      }
+    const found = countArr.find((v) => v[0] === nums[i]);
+    if (!found) {
+      countArr.push([nums[i], 1]);
+    } else {
+      found[1]++;
+    }
 
-      if (j < nums[i]) {
-        sum += countArr[j];
+    for (let j = 0; j < countArr; j++) {
+      if (countArr[j][0] < nums[i]) {
+        sum += countArr[j][1];
       }
     }
+    console.log(countArr);
     arr.push(sum);
   }
+
   return arr.reverse();
 }
 
@@ -280,19 +285,21 @@ const getRandomInt = (max) => Math.floor(Math.random() * max);
 const getRandomArr = (count, max) => new Array(count).fill(0).map(() => getRandomInt(max));
 
 let timeStart = Date.now();
-console.log(
-  "smaller9([ 2, 2, +0, +0, +0 ])",
-  smaller9([2, 2, +0, +0, +0]),
-  "turi buti",
-  [3, 3, +0, +0, +0]
-);
+// console.log(
+//   "smaller9([ 2, 2, +0, +0, +0 ])",
+//   smaller9([2, 2, +0, +0, +0]),
+//   "turi buti",
+//   [3, 3, +0, +0, +0]
+// );
+console.log("smaller9([5, 4, 3, 2, 1]))", smaller9([5, 4, 3, 2, 1]), [4, 3, 2, 1, 0]);
+console.log("smaller9([1, 2, 0]))", smaller9([1, 2, 0]), [1, 1, 0]);
 if (
   JSON.stringify(smaller9([5, 4, 3, 2, 1])) === "[4,3,2,1,0]" &&
   JSON.stringify(smaller9([+0, 1, 2])) === "[0,0,0]" &&
   JSON.stringify(smaller9([1, 2, 0])) === "[1,1,0]" &&
   JSON.stringify(smaller9([2, 2, +0, +0, +0])) === "[3,3,0,0,0]"
 ) {
-  smaller9(getRandomArr(100000, 100));
+  //   smaller9(getRandomArr(10000, 100));
 } else {
   console.error("invalid function");
 }
