@@ -1,3 +1,5 @@
+// https://github.com/bit-challenges/shopping-cart-challenge
+
 const store = [
   { id: "1", name: "🥕 Carrot", price: 2, stock: 10 },
   { id: "2", name: "🍅 Tomato", price: 3, stock: 8 },
@@ -29,6 +31,15 @@ function addProduct(id, quantity) {
 
 // Removes a product from the cart
 function removeProduct(id, quantity) {
+  id = String(id);
+  if (
+    isNaN(id) ||
+    typeof quantity !== "number" ||
+    isNaN(quantity) ||
+    quantity % 1 !== 0 ||
+    id % 1 !== 0
+  )
+    return console.log("invalid data entered for removeProduct function");
   const productInCartIndex = cart.findIndex((item) => item?.product?.id === id);
   const productInCart = cart[productInCartIndex];
   if (productInCartIndex === -1) return console.log(`there is no such product in the cart`);
@@ -86,3 +97,6 @@ removeProduct("1", 4);
 removeProduct("1", 4);
 console.table(store);
 getCartDetails();
+addProduct("x", 1);
+addProduct("5", 2);
+console.table(cart);
