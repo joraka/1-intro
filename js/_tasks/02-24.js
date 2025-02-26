@@ -10,93 +10,116 @@ const cart = []; // Empty shopping cart
 
 // Adds product to the cart
 function addProduct(id, quantity) {
-  const product = store.find((item) => item.id === id);
-  if (!product) return console.log("product not found");
-  if (quantity > product.stock)
+  const productInStore = store.find((item) => item.id === id);
+  if (!productInStore) return console.log(`product not found in the store (id: ${id})`);
+
+  if (quantity > productInStore.stock)
     return console.log(
-      `store doesn't have enough '${product.name}', inventory is ${product.stock}`
+      `store doesn't have enough '${productInStore.name}', inventory is ${productInStore.stock}`
     );
-  const productInCart = cart.find((item) => item.product.id === id);
-  if (productInCart) {
-    productInCart.quantity += quantity;
-    console.log(
-      `${quantity} pieces of product '${product.name}' added, total quantity in cart now is ${productInCart.quantity}`
+
+  const isProductInCart = cart.some((item) => item?.product?.id === id);
+  if (isProductInCart)
+    return console.log(
+      `cannot add product '${productInStore.name}' (id: ${productInStore.id}), it's already in the cart`
     );
-  } else {
-    cart.push({ product, quantity });
-    console.log(`${quantity} pieces of product '${product.name}' added`);
-  }
-  product.stock -= quantity;
+
+  cart.push({ product: productInStore, quantity });
+  productInStore.stock -= quantity;
+  console.log(
+    `${quantity} pieces of product '${productInStore.name}' (id: ${productInStore.id}) added`
+  );
 }
 
 // Removes a product from the cart
-function removeProduct(id, quantity) {
+function removeProduct(id) {
   id = String(id);
-  if (
-    isNaN(id) ||
-    typeof quantity !== "number" ||
-    isNaN(quantity) ||
-    quantity % 1 !== 0 ||
-    id % 1 !== 0
-  )
-    return console.log("invalid data entered for removeProduct function");
+  if (isNaN(id) || id % 1 !== 0) return console.log("invalid id entered");
   const productInCartIndex = cart.findIndex((item) => item?.product?.id === id);
+  if (productInCartIndex === -1)
+    return console.log(`there is no such product in the cart (id: ${id}) in the cart to remove`);
   const productInCart = cart[productInCartIndex];
-  if (productInCartIndex === -1) return console.log(`there is no such product in the cart`);
-  if (quantity > productInCart.quantity)
-    return console.log(
-      `cart doesnt have that many products, current count is ${productInCart.quantity}`
-    );
-  if (quantity < productInCart.quantity) {
-    productInCart.quantity -= quantity;
-    console.log(`${quantity} items were removed from product '${productInCart.product.name}'`);
-  } else {
-    cart.splice(productInCartIndex, 1);
-    console.log(`${productInCart.product.name} has been removed from cart`);
-  }
-  const productInStore = store.find((item) => item?.id === id);
-  productInStore.stock += quantity;
+  productInCart.product.stock += productInCart.quantity;
+  cart.splice(productInCartIndex, 1);
+  console.log(
+    `product '${productInCart.product.name}' (id: ${productInCart.product.id}) removed from the cart`
+  );
 }
 
 // Updates product quantity in the cart
 function updateQuantity(id, quantity) {
-  return addProduct(id, quantity);
+  id = String(id);
+  if (isNaN(id) || id % 1 !== 0) return console.log("invalid id entered");
+  if (typeof quantity !== "number" || isNaN(quantity) || quantity % 1 !== 0)
+    return console.log("invalid quantity entered");
+  if (quantity < 0) return console.log("can't update quanity because it's less than 0");
+
+  const productInCart = cart.find((item) => item?.product?.id === id);
+  if (!productInCart)
+    return console.log(`there is no such product in the cart (id: ${id}) to update`);
+
+  const totalAvailableQuantity = productInCart.product.stock + productInCart.quantity;
+
+  if (quantity === productInCart.quantity) return console.log(`cart already has ${quantity} items`);
+
+  if (quantity > totalAvailableQuantity) {
+    return console.log(
+      `store doesnt have that many products, current count is ${productInCart.quantity}`
+    );
+  } else {
+    console.log(
+      `updated '${productInCart.product.name}' (id: ${id}) quantity from ${productInCart.quantity} to ${quantity}`
+    );
+
+    productInCart.product.stock -= quantity - productInCart.quantity;
+    productInCart.quantity = quantity;
+  }
 }
 
 // Returns all cart items & total price
-function getCartDetails() {
-  let productsString = "### Cart:\n";
+function printCartDetails() {
   let totalCost = 0;
-  for (const item of cart) {
-    const cost = item.quantity * item.product.price;
-    productsString += `### ${item.quantity}x '${item.product.name}' = ${Number(cost).toFixed(
-      2
-    )} EUR\n`;
+  console.group("----[Cart Details]----");
+  for (const { product, quantity } of cart) {
+    const cost = quantity * product.price;
+    console.log(
+      `# id: ${product.id} | name: ${product.name} | quantity: ${quantity} | cost: ${Number(
+        cost
+      ).toFixed(2)} EUR`
+    );
     totalCost += cost;
   }
-  productsString += `### Total price: ${totalCost}`;
-  console.log(productsString);
+  console.log(`[Total price: ${Number(totalCost).toFixed(2)} EUR]`);
+  console.groupEnd();
+  console.log("-".repeat(22));
+}
+
+function printStoreDetails() {
+  console.group("----[Store Details]----");
+  for (const { id, name, price, stock } of store) {
+    console.log(`# id: ${id} | name: ${name} | price: ${price} | stock: ${stock}`);
+  }
+  console.groupEnd();
+  console.log("-".repeat(23));
 }
 
 function startShopping() {} // (EXTRA) Interactive shopping experience
 
 //---
-console.table(store);
-addProduct("5", 2);
 addProduct("1", 2);
-addProduct("2", 6);
 addProduct("1", 2);
-addProduct("1", 11);
-addProduct("2", 2);
-getCartDetails();
-console.table(store);
-removeProduct("2", 2);
-console.table(store);
-removeProduct("1", 6);
-removeProduct("1", 4);
-removeProduct("1", 4);
-console.table(store);
-getCartDetails();
-addProduct("x", 1);
-addProduct("5", 2);
-console.table(cart);
+printStoreDetails();
+printCartDetails();
+updateQuantity("1", 4);
+printCartDetails();
+updateQuantity("1", -5);
+updateQuantity("1", 100);
+printCartDetails();
+printStoreDetails();
+updateQuantity("1", 10);
+printCartDetails();
+printStoreDetails();
+updateQuantity("1", 10);
+updateQuantity("1", 5);
+printCartDetails();
+printStoreDetails();
