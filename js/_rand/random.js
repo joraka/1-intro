@@ -35,3 +35,6 @@ function randomMinMaxFloatZerofill(min, max, fixedNumber = 2){
 console.log(randomMinMaxFloatZerofill(5, 11, 3));
 console.log(randomMinMaxFloatZerofill(5, 11, 3));
 console.log();
+
+const getRandomInt = (max) => Math.floor(Math.random() * max);
+const getRandomArr = (count, max) => new Array(count).fill(0).map(() => getRandomInt(max));
