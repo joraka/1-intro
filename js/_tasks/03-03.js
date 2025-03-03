@@ -37,7 +37,7 @@ class CombustionEngineVehicle extends Vehicle {
     if (canVehicleMove.status === true) {
       const fuelNeeded = this.fuelCostToMove * steps;
       if (this.fuelStatus > fuelNeeded) {
-        console.log(`vehicle is moving ${steps} steps`);
+        console.log(`vehicle is moving ${steps} steps, fuel used ${fuelNeeded}`);
         this.fuelStatus -= fuelNeeded;
         if (this.fuelStatus === fuelNeeded) {
           console.log('out of fuel');
@@ -112,8 +112,7 @@ class LandVehicle extends CombustionEngineVehicle {
   }
 
   drive(steps = 1) {
-    console.log('driving: ');
-    this.move(steps)
+    this.move(steps);
   }
 }
 
@@ -132,12 +131,8 @@ class AirVehicle extends CombustionEngineVehicle {
     super(makerName, makerModel, year, color, fualTankSize, fuelCostToMove);
   }
 
-  fly() {
-    if (this.engineRunning) {
-      console.log(`${this.makerName} is flying`);
-    } else {
-      console.log("can't sail with engine off");
-    }
+  fly(steps = 1) {
+    this.move(steps);
   }
 }
 
@@ -170,44 +165,55 @@ class Boat extends SeaVehicle {
   }
 }
 
-const boat = new Boat('bob', '1', 2000, 'red', 100, 15);
-boat.sail();
-boat.startEngine();
-boat.checkFuelStatus();
-boat.checkFuelTankSize();
-boat.fillFuel(10);
-boat.sail();
-boat.startEngine();
-boat.sail();
-boat.fillFuel(10)
-boat.stopEngine();
-boat.fillFuel(10)
-boat.sail()
-boat.startEngine()
-boat.sail()
+// const boat = new Boat('bob', '1', 2000, 'red', 100, 15);
+// boat.sail();
+// boat.startEngine();
+// boat.checkFuelStatus();
+// boat.checkFuelTankSize();
+// boat.fillFuel(10);
+// boat.sail();
+// boat.startEngine();
+// boat.sail();
+// boat.fillFuel(10);
+// boat.stopEngine();
+// boat.fillFuel(10);
+// boat.sail();
+// boat.startEngine();
+// boat.sail();
 
-const bmw = new Car('bmw', 'i8', 12020, 'blue', 50, 10);
-bmw.drive();
-bmw.printName();
-bmw.checkEngineStatus();
-bmw.drive();
-bmw.startEngine();
-bmw.checkEngineStatus();
-bmw.drive();
-bmw.stopEngine();
-bmw.checkEngineStatus();
-bmw.fillFuel(10);
-bmw.fillFuel(40);
-bmw.fillFuel(1);
-bmw.drive();
-bmw.startEngine();
-bmw.drive(1);
-bmw.checkFuelStatus();
-bmw.drive(4);
-bmw.drive(1);
-bmw.drive(1);
-bmw.stopEngine();
-bmw.startEngine();
-bmw.drive();
-bmw.drive();
-bmw.printName();
+// const bmw = new Car('bmw', 'i8', 2020, 'blue', 50, 10);
+// bmw.drive();
+// bmw.printName();
+// bmw.checkEngineStatus();
+// bmw.drive();
+// bmw.startEngine();
+// bmw.checkEngineStatus();
+// bmw.drive();
+// bmw.stopEngine();
+// bmw.checkEngineStatus();
+// bmw.fillFuel(10);
+// bmw.fillFuel(40);
+// bmw.fillFuel(1);
+// bmw.drive();
+// bmw.startEngine();
+// bmw.drive(1);
+// bmw.checkFuelStatus();
+// bmw.drive(4);
+// bmw.drive(1);
+// bmw.drive(1);
+// bmw.stopEngine();
+// bmw.startEngine();
+// bmw.drive();
+// bmw.drive();
+// bmw.printName();
+
+const kawasaki = new Motorcycle('Kawasaki', 'ER', 2008, 'black', 10, 2);
+kawasaki.printName();
+kawasaki.drive();
+kawasaki.startEngine();
+kawasaki.fillFuel(10);
+kawasaki.drive();
+kawasaki.startEngine();
+kawasaki.drive();
+kawasaki.drive(10);
+
