@@ -103,3 +103,49 @@ class Motociklas extends MotorineTransportoPriemone {
 class Keturratis extends MotorineTransportoPriemone {
     constructor() { }
 }
+
+
+/*
+Auto
+    - Elek
+    - ICE
+
+Computer:
+    - Stalinis PC
+    - Mini PC
+    - Laptop
+    - Plansete
+    - Hibridinis (ekranas kaip atskira dalis)
+
+*/
+
+console.clear();
+
+class Computer {
+    constructor(name) {
+        this.name = name;
+        this.cpu = 'Pentium 2';
+        this.ram = '128mb';
+        this.hdd = '1gb';
+    }
+}
+class StalinisPC extends Computer {
+    constructor(name) {
+        super(name);
+        this.hasCDrom = true;
+    }
+}
+class Laptop extends Computer {
+    constructor(name) {
+        super(name);
+        this.hasTouchPad = true;
+    }
+}
+
+const pc0 = new Computer();
+const pc1 = new StalinisPC('HP');
+const pc2 = new Laptop('Asus');
+
+console.log(pc0);
+console.log(pc1);
+console.log(pc2);

@@ -106,3 +106,25 @@ for (let i = 0; i < maryte.parents.length; i++) {
     console.log(parent.isMarried);
     console.log(parent.marks);
 }
+
+// --------------
+
+const person = {
+    name: 'Jonas',
+    age: 99,
+};
+
+person.name;
+person.age;
+
+person['name'];
+person['age'];
+
+const kokiaInfoNoriSuzinotiVartotojas1 = 'name';
+const kokiaInfoNoriSuzinotiVartotojas2 = 'age';
+
+person.kokiaInfoNoriSuzinotiVartotojas1;    // undefined
+person.kokiaInfoNoriSuzinotiVartotojas2;    // undefined
+
+person[kokiaInfoNoriSuzinotiVartotojas1];   // Jonas
+person[kokiaInfoNoriSuzinotiVartotojas2];   // 99
