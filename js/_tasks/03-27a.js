@@ -16,6 +16,7 @@ const mok4 = ['Marius', 1, 5, 7, 8, 1, 5, 7, 8, 9];
 const mok5 = ['Marija', 1, 8, 1, 5, 7, 8, 9];
 const mok6 = ['Austėja', 1, 5, 7, 8, 1, 1, 1, 1, 1, 8, 9];
 const mok7 = ['Kebobas', 1, 1, 2];
+const mok8 = ['Raimundėlis', 2, 2, 2, 1];
 
 function gautiPazimius(mokinioMasyvas) {
   const [vardas, ...pazymiai] = mokinioMasyvas;
@@ -24,13 +25,13 @@ function gautiPazimius(mokinioMasyvas) {
   const arVyras = vardas.at(-1) === 's';
   const kreipinys1 = arVyras ? 'Mokinio' : 'Mokinės';
   const kreipinys2 = arVyras ? 'Mokinys' : 'Mokinė';
-  const islaikyta = pazymiuVidurkis >= 4;
+  const arIslaikyta = pazymiuVidurkis >= 4;
   console.log(`
     \r${kreipinys1} '${vardas}' duomenys:
     \rPažymiai: ${pazymiai.join(', ')}
     \rVidurkis: ${pazymiuVidurkis}
-    \rKursas ${islaikyta ? 'išlaikytas' : 'neišlaikytas'}`);
-  if (!islaikyta) {
+    \rKursas ${arIslaikyta ? 'išlaikytas' : 'neišlaikytas'}`);
+  if (!arIslaikyta) {
     let reikalingasPazimys = 0;
     for (let i = 4; i <= 10; i++) {
       if (Math.round((pazymiuSuma + i) / (pazymiai.length + 1)) >= 4) {
@@ -51,5 +52,5 @@ gautiPazimius(mok1);
 gautiPazimius(mok2);
 gautiPazimius(mok3);
 gautiPazimius(mok4);
-gautiPazimius(mok6);
 gautiPazimius(mok7);
+gautiPazimius(mok8);
