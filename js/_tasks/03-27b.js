@@ -87,8 +87,9 @@ function gautiTop3Filmus() {
 }
 
 function rastiFilmus(zanras = 'nesvarbu', imdb = 'nesvarbu') {
-  console.log(`\nFilmų paieška - žanras '${zanras}', imdb: '${imdb}'`);
   zanras = zanras.toLowerCase();
+  console.log(`\nFilmų paieška - žanras '${zanras}', imdb: '${imdb}'`);
+  if (!zanras) return console.log('Klaida, filmo žanras turi turėti bent vieną simbolį');
   if (zanras === 'nesvarbu' && imdb === 'nesvarbu') return spausdintiFilmuSarasa(gautiTop3Filmus());
 
   let rastiFilmai = [];
@@ -108,7 +109,7 @@ function rastiFilmus(zanras = 'nesvarbu', imdb = 'nesvarbu') {
         );
       }
     } else {
-      return console.log('Įvestas netinkamas imdb, reitingas turi būti nuo 0 iki 10');
+      return console.log('Klaida: įvestas netinkamas imdb, reitingas turi būti nuo 0 iki 10');
     }
     //imdb reitingas neįvestas, ieškoma tik pagal žanrą
   } else {
@@ -139,4 +140,5 @@ rastiFilmus('nesvarbu', 9);
 rastiFilmus('Nesvarbu', 8);
 rastiFilmus('Drama', -1);
 rastiFilmus('nesvarbu');
+rastiFilmus('');
 rastiFilmus();
