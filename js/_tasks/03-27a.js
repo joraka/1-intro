@@ -32,19 +32,15 @@ function gautiPazimius(mokinioMasyvas) {
     \rVidurkis: ${pazymiuVidurkis}
     \rKursas ${arIslaikyta ? 'išlaikytas' : 'neišlaikytas'}`);
   if (!arIslaikyta) {
-    let reikalingasPazimys = 0;
-    for (let i = 4; i <= 10; i++) {
-      if (Math.round((pazymiuSuma + i) / (pazymiai.length + 1)) >= 4) {
-        reikalingasPazimys = i;
-        break;
-      }
-    }
+    const reikalingasPazimys = 3.5 * (pazymiai.length + 1) - pazymiuSuma;
 
-    if (reikalingasPazimys) {
-      console.log(`${kreipinys2} pasitaisyti gali jeigu gautu pažimį: ${reikalingasPazimys}`);
+    if (reikalingasPazimys <= 10) {
+      console.log(`${kreipinys2} pasitaisyti gali jeigu gautu pažimį: ${Math.ceil(reikalingasPazimys)}`);
     } else {
       console.log(`${kreipinys2} pasitaisyti nebegali`);
     }
+
+    
   }
 }
 

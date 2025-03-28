@@ -98,14 +98,14 @@ function rastiFilmus(zanras = 'nesvarbu', imdb = 'nesvarbu') {
   if (String(imdb).toLowerCase() !== 'nesvarbu') {
     imdb = Number(imdb);
     if (isFinite(imdb) && imdb >= 0 && imdb <= 10) {
-      imdb = Math.trunc(imdb);
+      imdb = Math.floor(imdb);
       //ieškoma tik pagal reitingą
       if (zanras === 'nesvarbu') {
-        rastiFilmai = filmai.filter((filmas) => Math.trunc(filmas.imdb_ivertinimas) === imdb);
+        rastiFilmai = filmai.filter((filmas) => Math.floor(filmas.imdb_ivertinimas) === imdb);
         // ieškoma ir pagal reitingą ir pagal žanrą
       } else {
         rastiFilmai = filmai.filter(
-          (filmas) => filmas.zanras.includes(zanras) && Math.trunc(filmas.imdb_ivertinimas) === imdb
+          (filmas) => filmas.zanras.includes(zanras) && Math.floor(filmas.imdb_ivertinimas) === imdb
         );
       }
     } else {
@@ -134,11 +134,9 @@ function spausdintiFilmuSarasa(sarasas) {
 rastiFilmus('drama');
 rastiFilmus('Dramax');
 rastiFilmus('komedija');
-rastiFilmus('nuotyk');
+rastiFilmus('nuotyk', 'nesvarbu');
 rastiFilmus('Drama', 9);
 rastiFilmus('nesvarbu', 9);
-rastiFilmus('Nesvarbu', 8);
 rastiFilmus('Drama', -1);
 rastiFilmus('nesvarbu');
 rastiFilmus('');
-rastiFilmus();
