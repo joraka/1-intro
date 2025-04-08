@@ -121,3 +121,42 @@ visosSavaitesVidutineTemperatura(visosDienos);
 // nėra, praneškite kad šiandienos oras eiti į lauką yra puikus. Kokia
 // temperatūra yra šilta/nešalta/šalta įsivardinkite patys skaičiais. Šalta
 // turėtų būti bent 0 laipsnių kad kristų sniegas
+
+function oroRekomendacijos(temperatura, oras = 'sauleta') {
+  if (temperatura < 0) {
+    if (oras === 'debesuota') {
+      console.log('pasiimti striuke ir morką');
+    } else {
+      console.log('pasiimti striuke');
+    }
+  } else if (temperatura <= 15) {
+    if (oras === 'debesuota') {
+      console.log('pasiimti striuke ir skieti');
+    } else {
+      console.log('pasiimti striuke');
+    }
+  } else if (temperatura >= 25) {
+    if (oras === 'sauleta') {
+      console.log('pasitepti kremu nuo saulės');
+    } else if (oras === 'debesuota') {
+      console.log('pasiimkite skieti');
+    } else {
+      console.log('mėgaukitės oru');
+    }
+  } else {
+    console.log('mėgaukitės oru');
+  }
+}
+
+console.log(`oroRekomendacijos(10, 'sauleta')`);
+oroRekomendacijos(10, 'sauleta');
+console.log(`oroRekomendacijos(15, 'debesuota')`);
+oroRekomendacijos(15, 'debesuota');
+console.log(`oroRekomendacijos(-15, 'debesuota')`);
+oroRekomendacijos(-15, 'debesuota');
+console.log(`oroRekomendacijos(-15, 'sauleta')`);
+oroRekomendacijos(-15, 'sauleta');
+console.log(`oroRekomendacijos(30, 'sauleta')`);
+oroRekomendacijos(30, 'sauleta');
+console.log(`oroRekomendacijos(30, 'debesuota')`);
+oroRekomendacijos(30, 'debesuota');
