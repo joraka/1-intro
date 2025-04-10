@@ -37,7 +37,15 @@
       }
       #additional {
         display: flex;
-        gap: 5px;
+        /* gap: 5px; */
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      #generateButton,
+      #additional {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.232);
       }
 
       #current-color {
@@ -45,16 +53,24 @@
         color: white;
         text-shadow: 1px 1px black, 0px 0px 5px black;
       }
-      #darker-color,
-      #lighter-color {
+
+      .col {
         color: white;
         /* border: 1px solid black; */
-        width: 200px;
-        height: 200px;
+        width: 50%;
+        height: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-shadow: 1px 1px black, 0px 0px 5px black;
+      }
+
+      #generateButton {
+        background-color: rgba(255, 255, 255, 0.265);
+      }
+      #generateButton:active {
+        background-color: rgba(255, 255, 255, 0.54);
+        box-shadow: -3px -3px 1px rgba(0, 0, 0, 0.339) inset;
       }
     </style>
   </head>
@@ -63,15 +79,37 @@
       <div id="current-color">Current color<br /><span id="current-color-data">?</span></div>
       <button id="generateButton">generate new color</button>
       <div id="additional">
-        <div id="darker-color">color1</div>
-        <div id="lighter-color">color2</div>
+        <div class="col">color1</div>
+        <div class="col">color2</div>
+        <div class="col">color3</div>
+        <div class="col">color4</div>
+        <div class="col">color5</div>
+        <div class="col">color6</div>
+        <div class="col">color7</div>
+        <div class="col">color8</div>
+        <div class="col">color9</div>
+        <div class="col">color10</div>
       </div>
     </main>
     <script>
       const currentColorDiv = document.getElementById('current-color-data');
-      const darkerColorDiv = document.getElementById('darker-color');
-      const lighterColorDiv = document.getElementById('lighter-color');
+      const additionalColorList = Array.from(document.querySelectorAll('#additional > .col'));
       const colorCodes = '0123456789ABCDEF';
+
+      function shiftColor(color, shiftAmount = 20) {
+        return (
+          '#' +
+          color
+            .map((c) =>
+              Math.max(0, Math.min(255, c + shiftAmount))
+                .toString(16)
+                .padStart(2, '0')
+            )
+            .join('')
+            .toUpperCase()
+        );
+      }
+
       function generateColor() {
         const newColor =
           '#' +
@@ -89,33 +127,26 @@
           parseInt(newColor.slice(5, 7), 16),
         ];
 
-        const colorShift = 20;
-        const lighterColor =
-          '#' +
-          colorInHex
-            .map((col) =>
-              Math.min(255, col + colorShift)
-                .toString(16)
-                .padStart(2, '0')
-            )
-            .join('')
-            .toUpperCase();
-        const darkerColor =
-          '#' +
-          colorInHex
-            .map((col) =>
-              Math.max(0, col - colorShift)
-                .toString(16)
-                .padStart(2, '0')
-            )
-            .join('')
-            .toUpperCase();
+        let startColor = -60;
 
-        darkerColorDiv.innerText = darkerColor;
-        darkerColorDiv.style.backgroundColor = darkerColor;
-        lighterColorDiv.innerText = lighterColor;
-        lighterColorDiv.style.backgroundColor = lighterColor;
+        [
+          (startColor += 10),
+          (startColor += 10),
+          (startColor += 10),
+          (startColor += 10),
+          (startColor += 10),
+          (startColor += 10),
+          (startColor += 10),
+          (startColor += 10),
+          (startColor += 10),
+          (startColor += 10),
+        ].forEach((shiftAmount, index) => {
+          const newColor = shiftColor(colorInHex, shiftAmount);
+          additionalColorList[index].innerText = newColor;
+          additionalColorList[index].style.backgroundColor = newColor;
+        });
       }
+
       generateColor();
 
       document

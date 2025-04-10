@@ -11,6 +11,7 @@ input {
   font-weight: 500;
   font-style: normal;
 }
+
 body {
   min-height: 100vh;
   display: flex;
