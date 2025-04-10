@@ -1,0 +1,81 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input {
+  font-family: 'National Park', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0, 212, 28);
+  background: linear-gradient(
+    196deg,
+    rgba(0, 212, 28, 1) 0%,
+    rgba(5, 255, 0, 1) 10%,
+    rgba(0, 255, 154, 1) 100%
+  );
+}
+
+main {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 30px;
+}
+
+.box-name {
+  text-align: center;
+}
+
+#form .group {
+  display: flex;
+  flex-direction: column;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+
+#form input[type='submit'] {
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: rgb(68, 255, 68);
+}
+
+#form input[type='submit']:active {
+  background-color: rgb(0, 222, 0);
+}
+
+#form input[type='number'] {
+  padding: 5px;
+  color: black;
+  outline: none;
+}
+
+#form input[type='number']:focus:not(:disabled, :read-only) {
+  border-color: red;
+}
+
+#form input[type='number']:read-only {
+  cursor: default;
+}
+
+#output {
+  outline: none;
+  background-color: rgb(221, 221, 221);
+  border: 1px solid gray;
+}
