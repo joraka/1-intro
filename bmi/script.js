@@ -8,14 +8,31 @@ const resultElement = document.getElementById('result');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
+  resultElement.innerText = '';
+
   if (!heightInput.value || !weightInput.value) {
     resultElement.innerText = `Please enter your height and weight`;
     return;
   }
 
+  const heightInt = Number(heightInput.value);
+  const weightInt = Number(weightInput.value);
+
+  console.log({ heightInt, weightInt });
+
+  if (!isFinite(heightInt) || heightInt < 1 || heightInt > 300) {
+    resultElement.innerText = `Invalid height entered, must be between 1cm and 300cm`;
+    return;
+  }
+
+  if (!isFinite(weightInt) || weightInt < 1 || weightInt > 300) {
+    resultElement.innerText = `Invalid height entered, must be between 1kg and 300kg`;
+    return;
+  }
+
   const bmi = (Number(weightInput.value) / Number(heightInput.value) ** 2) * 10000;
 
-  outputElement.value = bmi.toFixed(1);
+  outputElement.value = Number(bmi.toFixed(1));
 
   let result = '';
   if (bmi < 18.5) {

@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input,
+textarea {
+  font-family: 'National Park', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0, 212, 28);
+  background: linear-gradient(
+    196deg,
+    rgb(0, 255, 221) 0%,
+    rgb(0, 200, 255) 50%,
+    rgb(0, 166, 255) 100%
+  );
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  position: relative;
+}
+
+main::before {
+  position: absolute;
+  content: '';
+  height: 1px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.073);
+  top: 2.4rem;
+  left: 0;
+  right: 0;
+}
+
+main {
+  background-color: red;
+  padding: 10px;
+  box-shadow: 1px 1px 5px black;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  position: relative;
+  border: 2px solid white;
+  margin: 4px 4px;
+}
+
+#textField {
+  width: 100%;
+  resize: vertical;
+  min-height: 200px;
+  outline: none;
+  padding: 10px;
+  max-height: 300px;
+}
+
+.bottomField {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottomField span {
+  font-weight: bold;
+}
